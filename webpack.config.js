@@ -13,11 +13,12 @@ module.exports = {
   mode: 'development',
   watch: true,
   devServer: {
-    contentBase: './build',
+    contentBase: path.join(__dirname, 'build'),
     compress: true,
     hot: true,
     inline: true,
     port: 3000,
+    open: true,
   },
   module: {
     rules: [
@@ -44,7 +45,10 @@ module.exports = {
         use: [
           {
             loader: 'file-loader',
-            options: {},
+            options: {
+              outputPath: 'images/',
+              publicPath: 'images/',
+            },
           },
         ],
       },
